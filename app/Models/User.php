@@ -71,18 +71,18 @@ class User extends Authenticatable
             ->groupBy('users.id');
     }
 
-    // public function scopeOrderByBirthday(Builder $query): Builder
-    // {
-    //     return $query->orderBy
-    // }
+    public function scopeOrderByBirthday(Builder $query): Builder
+    {
+        return $query->orderByRaw('strftime(\'%m\', birthdate) ASC, strftime(\'%d\', birthdate) ASC');
+    }
 
     public function scopeHavingBirthdayThisWeek(Builder $query): Builder
     {
         $startOfWeek = now()->startOfWeek(Carbon::MONDAY);
         $endOfWeek = now()->endOfWeek(Carbon::SUNDAY);
-
+    
         return $query->whereBetween(
-            'birthday', 
+            DB::raw('strftime(\'%m-%d\', birthdate)'), 
             [
                 $startOfWeek->format('m-d'), 
                 $endOfWeek->format('m-d')

@@ -5,11 +5,6 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
-use Barryvdh\Debugbar\Facades\Debugbar;
-use Carbon\Carbon;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 class UsersTable extends Component
 {
@@ -35,7 +30,6 @@ class UsersTable extends Component
             'users.id', 
             'users.name', 
             'users.birthdate', 
-            'users.birthday', 
             'users.email', 
             'users.email_verified_at', 
             'users.created_at', 
@@ -43,7 +37,7 @@ class UsersTable extends Component
         )
             ->withLastPurchaseDate()
             ->havingBirthdayThisWeek()
-            ->orderBy('birthday')
+            ->orderByBirthday()
             ->paginate($this->perPage);
 
 
