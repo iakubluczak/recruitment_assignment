@@ -38,6 +38,12 @@ Migrate the database:
 php artisan migrate
 ```
 
+Seed the database with users and purchases:
+
+```bash
+php artisan db:seed
+```
+
 Start the server:
 
 ```bash
