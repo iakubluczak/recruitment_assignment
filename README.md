@@ -20,7 +20,7 @@ git clone https://link-to-project
 Go to the project directory:
 
 ```bash
-cd assignment
+cd recruitment_assignment
 ```
 
 Install dependencies:
