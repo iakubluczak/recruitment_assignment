@@ -44,6 +44,12 @@ Seed the database with users and purchases:
 php artisan db:seed
 ```
 
+Set your aplication key:
+
+```bash
+php artisan key:generate
+```
+
 Start the server:
 
 ```bash
